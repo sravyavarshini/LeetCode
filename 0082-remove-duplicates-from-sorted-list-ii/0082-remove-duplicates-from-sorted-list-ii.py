@@ -11,19 +11,15 @@ class Solution:
         self.prev.next=head
         initial=self.prev
         while head:
-            if(head.next != None and head.val != head.next.val):
+            if((head.next != None and head.val != head.next.val) or (head.next == None and head.val != initial.val)):
                 initial.next=head
                 initial=head
             elif(head.next != None and head.val == head.next.val):
                  while (head.next != None and head.val == head.next.val):
                     head=head.next
-                 initial.next=head.next
-
-            elif(head.next == None and head.val != initial.val):
-                initial.next=head
 
             head=head.next
-            
+        initial.next=None
         return self.prev.next
 
 
